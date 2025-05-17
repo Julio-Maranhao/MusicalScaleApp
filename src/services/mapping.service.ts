@@ -13,7 +13,7 @@ export class MappingService {
   onNotesChange:Subject<noteModel[]> = new Subject<noteModel[]>;
   onInstrumentChange:Subject<musicalInstrumentModel> = new Subject<musicalInstrumentModel>;
 
-  // Store a MAP (scale or chords set of notes and one instrument)
+  // Store notes and one instrument
   constructor(private _instrumentService:InstrumentService) {
     this.gerarGuitarraPadrao();
   }

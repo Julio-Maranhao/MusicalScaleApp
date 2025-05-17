@@ -1,7 +1,7 @@
 import { musicalInstrumentModel } from "./instrument-model";
 import { noteModel } from "./note-model"
 
-export interface mapping {
+export interface DbObject {
   name:string;
   type:'scale'|'chord'|'notes';
   notes:noteModel[];
