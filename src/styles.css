@@ -30,6 +30,13 @@ a {
 :root {
   --first-text-color: #252525;
   --second-text-color: #ffffff;
+  --gray: #6d6d6d;
+  --light-gray: #e2e2e2;
+  --guitar-neck-white: #BBA79C;
+  --guitar-neck-brown: #54302E;
+  --guitar-neck-ebony: #333031;
+  --guitar-neck-mapple: #ECCEA4;
+  --guitar-neck-purple: #7A354A;
 }
 
 * {
@@ -42,6 +49,18 @@ a {
 
 .tx-second {color: var(--second-text-color);}
 .tx-main {color: var(--first-text-color);}
+
+.bg-black {background-color: var(--first-text-color);}
+.bg-white {background-color: var(--second-text-color);}
+.bg-neck-white {background-color: var(--guitar-neck-white);}
+.bg-neck-brown {background-color: var(--guitar-neck-brown);}
+.bg-neck-ebony {background-color: var(--guitar-neck-ebony);}
+.bg-neck-mapple {background-color: var(--guitar-neck-mapple);}
+.bg-neck-purple {background-color: var(--guitar-neck-purple);}
+
+.note-small { height: 30px; width: 30px; border-radius:15px ; -webkit-border-radius:15px ; -moz-border-radius:15px ; -ms-border-radius:15px ; -o-border-radius:15px ; }
+.note-medium { height: 40px; width: 40px; border-radius:20px ; -webkit-border-radius:20px ; -moz-border-radius:20px ; -ms-border-radius:20px ; -o-border-radius:20px ; }
+.note-large { height: 50px; width: 50px; border-radius:25px ; -webkit-border-radius:25px ; -moz-border-radius:25px ; -ms-border-radius:25px ; -o-border-radius:25px ; }
 
 .page-container {
   min-height: calc(100vh - 200px);

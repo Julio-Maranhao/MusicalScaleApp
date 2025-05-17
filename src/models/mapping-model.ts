@@ -1,8 +1,9 @@
-import { musicalInstrument } from "./instrument-model";
-import { musicalNote } from "./note-model"
+import { musicalInstrumentModel } from "./instrument-model";
+import { noteModel } from "./note-model"
 
-export type mapping = {
+export interface mapping {
   name:string;
-  notes:musicalNote[];
-  instrument:musicalInstrument;
+  type:'scale'|'chord'|'notes';
+  notes:noteModel[];
+  instrument:musicalInstrumentModel;
 }

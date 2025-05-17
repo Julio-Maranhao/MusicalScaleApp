@@ -1,10 +1,14 @@
-export type musicalInstrument = {
+import { noteModel } from "./note-model";
+
+export type musicalInstrumentModel = {
   name:string;
-  stringNumber:number;
   fretNumber:number;
-  fretboardColor:string;
-  fretColor:string;
-  nutColor:string;
-  background: string;
-  noteSize: string;
+  baiscTuning: noteModel[];
+  appearence: {
+    fretboardColor:string;
+    fretColor:string;
+    nutColor:string;
+    background: string;
+    noteSize: string;
+  }
 }
