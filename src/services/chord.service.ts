@@ -43,4 +43,10 @@ export class ChordService {
     return this.chordList.filter(e=> (e.tonicaName + e.modificadorName).includes(name));
   }
 
+  filterChordByFormula(formula:number[]){
+    return this.chordList.filter((e)=>{
+      formula.every(fItem => e.resultFormula.includes(fItem))
+    })
+  }
+
 }

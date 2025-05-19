@@ -50,17 +50,41 @@ a {
 .tx-second {color: var(--second-text-color);}
 .tx-main {color: var(--first-text-color);}
 
+/* Backgrounds*/
 .bg-black {background-color: var(--first-text-color);}
 .bg-white {background-color: var(--second-text-color);}
+.bg-grad-blue {background: linear-gradient(to right, #2193b0, #6dd5ed);}
+.bg-grad-gray {background: linear-gradient(to right, #bdc3c7, #2c3e50);}
+.bg-grad-lawrencium {background: linear-gradient(to right, #0f0c29, #302b63, #24243e);}
+/*Neck colors*/
 .bg-neck-white {background-color: var(--guitar-neck-white);}
 .bg-neck-brown {background-color: var(--guitar-neck-brown);}
 .bg-neck-ebony {background-color: var(--guitar-neck-ebony);}
 .bg-neck-mapple {background-color: var(--guitar-neck-mapple);}
 .bg-neck-purple {background-color: var(--guitar-neck-purple);}
+/*Fret Colors*/
+.bg-fret-gray {background: linear-gradient(90deg,rgba(84, 84, 84, 1) 0%, rgba(128, 128, 128, 1) 50%, rgba(84, 84, 84, 1) 100%);}
+.bg-fret-inox {background: linear-gradient(90deg,rgba(133, 133, 133, 1) 0%, rgba(204, 204, 204, 1) 50%, rgba(133, 133, 133, 1) 100%);}
+.bg-fret-gold {background: linear-gradient(90deg,rgba(168, 155, 59, 1) 0%, rgba(240, 221, 96, 1) 50%, rgba(168, 155, 59, 1) 100%);}
+/*Nut Colors*/
+.bg-nut-bone {background-color: #D6D3C7;}
+.bg-nut-black {background-color: var(--first-text-color);}
+.bg-nut-brass {background-color: #D7B563;}
+/*String*/
+.bg-strings {background: linear-gradient(0deg,rgba(84, 84, 84, 1) 0%, rgba(128, 128, 128, 1) 50%, rgba(84, 84, 84, 1) 100%);}
 
+.note {margin-left: 4px; margin-right: 4px;}
 .note-small { height: 30px; width: 30px; border-radius:15px ; -webkit-border-radius:15px ; -moz-border-radius:15px ; -ms-border-radius:15px ; -o-border-radius:15px ; }
 .note-medium { height: 40px; width: 40px; border-radius:20px ; -webkit-border-radius:20px ; -moz-border-radius:20px ; -ms-border-radius:20px ; -o-border-radius:20px ; }
 .note-large { height: 50px; width: 50px; border-radius:25px ; -webkit-border-radius:25px ; -moz-border-radius:25px ; -ms-border-radius:25px ; -o-border-radius:25px ; }
+
+.note-space-small {margin-top: 17px; margin-bottom: 17px;}
+.note-space-medium {margin-top: 22px; margin-bottom: 22px;}
+.note-space-large {margin-top: 27px; margin-bottom: 27px;}
+
+.note-gap-small {margin-left: 34px;}
+.note-gap-medium {margin-left: 44px;}
+.note-gap-large {margin-left: 54px;}
 
 .page-container {
   min-height: calc(100vh - 200px);

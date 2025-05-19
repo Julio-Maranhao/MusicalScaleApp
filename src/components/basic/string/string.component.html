@@ -1,1 +1,5 @@
-<p>string works!</p>
+<div class="bg-strings string flex flex-row align-center" [style]="stringHeight()">
+  @for (note of filteredNotes; track $index) {
+    <app-note [class]="$index == 0? 'open-string':''" [note]="note" size="medium"/>
+  }
+</div>

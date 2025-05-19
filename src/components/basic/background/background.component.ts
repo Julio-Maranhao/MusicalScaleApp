@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-background',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './background.component.css'
 })
 export class BackgroundComponent {
-
+  @Input() backgroundColor:string = 'white';
 }

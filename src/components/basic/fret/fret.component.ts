@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-fret',
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './fret.component.css'
 })
 export class FretComponent {
-
+  @Input() color:'gray' | 'inox' | 'gold' = 'gray';
+  @Input() noteSize:'small' | 'medium' | 'large'= 'small';
+  @Input() fretNumber!:number;
 }

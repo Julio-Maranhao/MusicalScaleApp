@@ -1,1 +1,15 @@
-<p>fretboard works!</p>
+<div class="fretboard bg-neck-{{color}}" #fretboard>
+  @if (instrument) {
+    <div class="frets flex flex-row">
+      <app-nut color="bone"/>
+      @for (n of getRange(instrument.fretNumber); track $index) {
+        <app-fret [fretNumber]="n" color="gray" [noteSize]="'medium'"/>
+      }
+    </div>
+    <div class="strings flex flex-column">
+      @for (tuning of instrument.baiscTuning; track $index) {
+        <app-string [notes]="notes" class="note-space-{{instrument.appearence.noteSize}}" [stringNumber]="tuning.corda"/>
+      }
+    </div>
+  }
+</div>

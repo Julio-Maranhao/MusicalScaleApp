@@ -1,0 +1,15 @@
+.fretboard {
+  min-height: 100px;
+  min-width: 600px;
+  position: relative;
+}
+
+.frets {
+  position: absolute;
+  height: 100%;
+}
+
+.strings {
+  position: relative;
+  z-index: 1;
+}
