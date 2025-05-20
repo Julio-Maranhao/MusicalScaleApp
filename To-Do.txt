@@ -1,0 +1,9 @@
+1 - Ajustar o modo de estilização para os estilos predefinidos
+2 - Criar Behavior subject no Styles.service para atualizar os estilos
+3 - Criar menu lateral suspenso acordion com as opções:
+  - Instrument
+  - Appearance
+  - Pick Notes
+  - Note Colors
+  - Scales
+  - Chords

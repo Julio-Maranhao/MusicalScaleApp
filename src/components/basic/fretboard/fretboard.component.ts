@@ -18,10 +18,15 @@ export class FretboardComponent {
   @Input() instrument!: musicalInstrumentModel;
   @Input() notes!: noteModel[];
   @ViewChild('fretboard') neck!: ElementRef;
+  fretSpaceBase = 1.5;
+  maxFrets = 24;
 
   ngAfterViewInit(){
-    console.log(this.neck);
-    this.neck.nativeElement.style.width = `${16 + 48*this.instrument.fretNumber + 8}px`;
+    let totalSize = 16 + 8;
+    for (let index = 0; index < this.instrument.fretNumber; index++) {
+      totalSize += 34 + this.fretSpaceBase * (this.maxFrets - index) + 4;
+    }
+    this.neck.nativeElement.style.width = `${totalSize}px`;
   }
 
   getRange(num:number){

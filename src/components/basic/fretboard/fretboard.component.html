@@ -3,7 +3,7 @@
     <div class="frets flex flex-row">
       <app-nut color="bone"/>
       @for (n of getRange(instrument.fretNumber); track $index) {
-        <app-fret [fretNumber]="n" color="gray" [noteSize]="'medium'"/>
+        <app-fret [fretNumber]="$index" color="gray" [noteSize]="'medium'"/>
       }
     </div>
     <div class="strings flex flex-column">

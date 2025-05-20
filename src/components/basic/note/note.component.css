@@ -1,8 +1,13 @@
 .note {
   position: relative;
-  transform: translateX(calc(8px - 2px - 100%));
+  cursor: pointer;
+  /* transform: translateX(calc(8px - 2px - 100%));
   -webkit-transform: translateX(calc(8px - 2px - 100%));
   -moz-transform: translateX(calc(8px - 2px - 100%));
   -ms-transform: translateX(calc(8px - 2px - 100%));
-  -o-transform: translateX(calc(8px - 2px - 100%));
+  -o-transform: translateX(calc(8px - 2px - 100%)); */
+}
+
+.note:hover {
+  opacity: .9;
 }

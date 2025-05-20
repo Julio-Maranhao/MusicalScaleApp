@@ -25,7 +25,7 @@ export const DEFINICOES_INSTRUMENTOS:MusicalInstrument[] = [
       {traste: 0, corda: 5, noteId: 9, octave: 2, noteColor: 'black'},   // A
       {traste: 0, corda: 6, noteId: 4, octave: 2, noteColor: 'black'},   // E
     ],
-    appearence: { fretboardColor: "white", fretColor: "black", nutColor: "black", background: "white", noteSize: "medium"}
+    appearence: { fretboardColor: "mapple", fretColor: "inox", nutColor: "bone", background: "lawrencium", noteSize: "medium"}
   },
   {
     name: "Baixo 5 Cordas",
@@ -37,6 +37,6 @@ export const DEFINICOES_INSTRUMENTOS:MusicalInstrument[] = [
       {traste: 0, corda: 4, noteId: 4, octave: 2, noteColor: 'black'},   // E
       {traste: 0, corda: 5, noteId: 11, octave: 1, noteColor: 'black'},  // B
     ],
-    appearence: { fretboardColor: "white", fretColor: "black", nutColor: "black", background: "white", noteSize: "medium"}
+    appearence: { fretboardColor: "mapple", fretColor: "inox", nutColor: "bone", background: "lawrencium", noteSize: "medium"}
   },
 ]

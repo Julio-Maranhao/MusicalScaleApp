@@ -94,6 +94,7 @@ a {
 .flex-column{flex-direction: column;}
 .flex-row{flex-direction: row;}
 .flex-center{align-content: center; justify-content: center;flex-wrap: wrap;}
+.flex-start-center{align-content: center; justify-content: start;flex-wrap: wrap;}
 .flex-gap-1{gap: .5rem;}
 .flex-gap-2{gap: 1rem;}
 .flex-gap-3{gap: 1.5rem;}
@@ -119,3 +120,14 @@ a {
 .content-end{justify-content: end;}
 
 .pointer {cursor: pointer;}
+
+.overflow {overflow: auto;}
+
+.pd-1 {padding: 1rem;}
+.pd-2 {padding: 2rem;}
+.pd-3 {padding: 3rem;}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
