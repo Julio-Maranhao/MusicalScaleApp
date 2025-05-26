@@ -88,13 +88,17 @@ a {
 
 .page-container {
   min-height: calc(100vh - 200px);
+  box-sizing: border-box;
 }
+
+.grid {display: grid;}
 
 .flex {display: flex;}
 .flex-column{flex-direction: column;}
 .flex-row{flex-direction: row;}
 .flex-center{align-content: center; justify-content: center;flex-wrap: wrap;}
 .flex-start-center{align-content: center; justify-content: start;flex-wrap: wrap;}
+.flex-center-start{align-content: start; justify-content: center;flex-wrap: wrap;}
 .flex-gap-1{gap: .5rem;}
 .flex-gap-2{gap: 1rem;}
 .flex-gap-3{gap: 1.5rem;}
@@ -130,4 +134,10 @@ a {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .fretboard-container {
+    height: 1700px;
+  }
 }

@@ -1,10 +1,11 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
 import { musicalInstrumentModel } from '../../../models/instrument-model';
 import { StringComponent } from "../string/string.component";
 import { NutComponent } from "../nut/nut.component";
 import { FretComponent } from "../fret/fret.component";
 import { MappingService } from '../../../services/mapping.service';
 import { noteModel } from '../../../models/note-model';
+import { StylesService } from '../../../services/styles.service';
 
 @Component({
   selector: 'app-fretboard',
@@ -14,19 +15,26 @@ import { noteModel } from '../../../models/note-model';
   styleUrl: './fretboard.component.css'
 })
 export class FretboardComponent {
-  @Input() color:'white' | 'brown' | 'ebony' | 'mapple' | 'purple' = 'mapple';
+  @Input() color:string = 'mapple';
   @Input() instrument!: musicalInstrumentModel;
   @Input() notes!: noteModel[];
   @ViewChild('fretboard') neck!: ElementRef;
   fretSpaceBase = 1.5;
   maxFrets = 24;
 
+  constructor(private styleService:StylesService){}
+
   ngAfterViewInit(){
+    this.styleService.neckStyleChanges.subscribe((val)=>{
+      this.styleService.setStyle(this.neck, 'background', val);
+    });
+    this.styleService.getNeckColor(this.color);
+
     let totalSize = 16 + 8;
     for (let index = 0; index < this.instrument.fretNumber; index++) {
-      totalSize += 34 + this.fretSpaceBase * (this.maxFrets - index) + 4;
+      totalSize += 40 + this.fretSpaceBase * (this.maxFrets - (index+1)) + 4 + 0.5;
     }
-    this.neck.nativeElement.style.width = `${totalSize}px`;
+    this.styleService.setStyle(this.neck, 'width', `${totalSize}px`);
   }
 
   getRange(num:number){

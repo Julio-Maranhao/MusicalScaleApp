@@ -1,6 +1,8 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
 import { noteModel } from '../../../models/note-model';
 import { NoteComponent } from "../note/note.component";
+import { StylesService } from '../../../services/styles.service';
+import { MappingService } from '../../../services/mapping.service';
 
 @Component({
   selector: 'app-string',
@@ -11,18 +13,26 @@ import { NoteComponent } from "../note/note.component";
 })
 export class StringComponent {
   @Input() stringNumber!:number;
+  @Input() color:string = 'strings';
   @Input() thickness:'thin' | 'large' = 'thin';
   @Input() notes!: noteModel[];
-  stringHeight = signal('');
+  @ViewChild('string') string!:ElementRef;
   filteredNotes:noteModel[] = [];
 
-  constructor(){}
+  constructor(private stylesService:StylesService){}
 
   ngOnInit(){
-    const stringBase = this.thickness == 'thin' ? 1 : 2;
-    this.stringHeight.set(`height: ${stringBase * this.stringNumber}px`);
     if (this.notes && this.stringNumber) {
       this.filteredNotes = this.notes.filter(e => e.corda == this.stringNumber);
     }
+  }
+
+  ngAfterViewInit(){
+    this.stylesService.stringStyleChanges.subscribe(val => {
+      this.stylesService.setStyle(this.string, 'background', val);
+    });
+    this.stylesService.getStringColor(this.color);
+    const stringBase = this.thickness == 'thin' ? 1 : 2;
+    this.stylesService.setStyle(this.string, 'height', `${stringBase * this.stringNumber}px`);
   }
 }

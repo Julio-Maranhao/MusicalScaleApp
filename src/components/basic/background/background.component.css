@@ -1,0 +1,23 @@
+.teste {
+  width: 260px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, .7);
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+}
+
+.background-ap {
+  align-content: center; justify-content: start;flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .background-app {
+    padding: 0;
+    align-content: flex-start;
+    justify-content: start;
+    flex-wrap: wrap;
+  }
+}

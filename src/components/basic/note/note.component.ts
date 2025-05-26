@@ -18,11 +18,11 @@ export class NoteComponent {
   marginLeft = signal('');
 
   ngOnInit(){
-    let leftMargin = -4 + this.fretSpaceBase * (this.maxFrets - this.note.traste);
+    let leftMargin = -.82 + this.fretSpaceBase * (this.maxFrets - (this.note.traste-1));
     if (this.note.traste == 0) {
       leftMargin = 0;
     }
-    this.marginLeft.set(`margin-left:${leftMargin}px; transform:translateX(-100%);`);
+    this.marginLeft.set(`margin-left:${leftMargin}px;`);
 
   }
 

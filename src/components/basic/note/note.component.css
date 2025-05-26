@@ -1,13 +1,23 @@
 .note {
   position: relative;
   cursor: pointer;
-  /* transform: translateX(calc(8px - 2px - 100%));
-  -webkit-transform: translateX(calc(8px - 2px - 100%));
-  -moz-transform: translateX(calc(8px - 2px - 100%));
-  -ms-transform: translateX(calc(8px - 2px - 100%));
-  -o-transform: translateX(calc(8px - 2px - 100%)); */
+  transform: translateX(-44px);
+  -webkit-transform: translateX(-44px);
+  -moz-transform: translateX(-44px);
+  -ms-transform: translateX(-44px);
+  -o-transform: translateX(-44px);
 }
 
 .note:hover {
   opacity: .9;
+}
+
+@media screen and (max-width: 768px) {
+  .note{
+    transform: rotate(-90deg) translateY(-44px);
+    -webkit-transform: rotate(-90deg) translateY(-44px);
+    -moz-transform: rotate(-90deg) translateY(-44px);
+    -ms-transform: rotate(-90deg) translateY(-44px);
+    -o-transform: rotate(-90deg) translateY(-44px);
+}
 }

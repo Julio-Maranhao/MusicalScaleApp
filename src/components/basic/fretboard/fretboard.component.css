@@ -4,7 +4,8 @@
   position: relative;
   justify-self: center;
   align-self: center;
-  margin-left: 1rem;
+  margin-left: 4rem;
+  margin-right: 2rem;
 }
 
 .frets {
@@ -17,3 +18,15 @@
   z-index: 1;
 }
 
+
+@media screen and (max-width: 768px) {
+  .fretboard{
+    justify-self: start;
+    align-self: flex-start;
+    transform: translateX(calc(50vw - 125px));
+    -webkit-transform: translateX(calc(50vw - 125px));
+    -moz-transform: translateX(calc(50vw - 125px));
+    -ms-transform: translateX(calc(50vw - 125px));
+    -o-transform: translateX(calc(50vw - 125px));
+}
+}

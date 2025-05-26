@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class FakeDbService {
   // Store sets of MAPS
   constructor() { }
+
+  importDefinitions(){}
+
+  exportDefinitions(){}
 }

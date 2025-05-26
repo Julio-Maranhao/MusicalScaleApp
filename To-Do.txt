@@ -1,9 +1,27 @@
-1 - Ajustar o modo de estilização para os estilos predefinidos
-2 - Criar Behavior subject no Styles.service para atualizar os estilos
-3 - Criar menu lateral suspenso acordion com as opções:
-  - Instrument
-  - Appearance
-  - Pick Notes
-  - Note Colors
-  - Scales
-  - Chords
+0 - Criar Search menu central com botões para abrir os menus laterais ou dropdown de opções
+1 - Criar Context menu com opções variáveis
+2 - Criar Side Menu para seleção do tipo de busca (filtro), seleção do acorde, da escala e da tonica
+
+
+      (               🔍) (📖) (⚙)
+      (lista de notas              ) - > ao adicionar notas (duplo click ou context menu)
+      (buscar acorde)(buscar escala) - > quando as notas aparecerem dependendo do filtro
+
+
+MENU:
+0 - Formato: (🔍250px) (filtro 50px) (configurações 50px)
+  0.1 - Resultado da busca em baixo formato: (notas ou texto do acorde)
+  0.2 - Seleção de notas até 6 notas por fileira e seleção de cor ao clicar input type="color"
+  0.3 - Context Menu (right click) para selecionar nota e definir a cor,
+        expandir seleção, setar a cor de vários ao mesmo tempo com uma lista
+        dentro do serviço de seleção de notas onde o evento de note change é ativado
+        buscar acorde ao clicar enter ou no botão da lupa
+1 - Selecionar instrumento -> Side Menu
+  1.1 - Editar o Instrumento selecionado, cores, afinação, nome, trastes
+  1.2 - Criar novo instrumento
+  1.3 - Salvar instrumento
+2 - Seleção Notas -> Menu Central
+  2.1 - Editar cor da nota
+  2.2 - Não visualizar nota
+  2.3 - Salvar configuração
+3 -

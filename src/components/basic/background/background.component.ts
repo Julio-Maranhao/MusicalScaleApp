@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { StylesService } from '../../../services/styles.service';
 
 @Component({
   selector: 'app-background',
@@ -9,4 +10,14 @@ import { Component, Input } from '@angular/core';
 })
 export class BackgroundComponent {
   @Input() backgroundColor:string = 'white';
+  @ViewChild('background') bg!:ElementRef;
+
+  constructor(private stylesService:StylesService){}
+
+  ngAfterViewInit(){
+    this.stylesService.backgroundStyleChanges.subscribe((val)=>{
+      this.stylesService.setStyle(this.bg, 'background', val)
+    })
+    this.stylesService.getBackgroundColor(this.backgroundColor);
+  }
 }

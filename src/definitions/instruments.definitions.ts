@@ -16,7 +16,7 @@ export interface MusicalInstrument {
 export const DEFINICOES_INSTRUMENTOS:MusicalInstrument[] = [
   {
     name: "Guitarra Padrão",
-    fretNumber: 22,
+    fretNumber: 24,
     baiscTuning: [
       {traste: 0, corda: 1, noteId: 4, octave: 4, noteColor: 'black'},   // e
       {traste: 0, corda: 2, noteId: 11, octave: 3, noteColor: 'black'},  // B

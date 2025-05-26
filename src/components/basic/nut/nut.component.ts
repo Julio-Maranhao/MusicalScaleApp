@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { StylesService } from '../../../services/styles.service';
 
 @Component({
   selector: 'app-nut',
@@ -8,5 +9,15 @@ import { Component, Input } from '@angular/core';
   styleUrl: './nut.component.css'
 })
 export class NutComponent {
-  @Input() color:'bone' | 'black' | 'brass' = 'black';
+  @Input() color:string = 'black';
+  @ViewChild('nut') nut!:ElementRef;
+
+  constructor(private stylesService: StylesService){}
+
+  ngAfterViewInit(){
+    this.stylesService.nutStyleChanges.subscribe((val)=>{
+      this.stylesService.setStyle(this.nut, 'background', val)
+    })
+    this.stylesService.getNutColor(this.color);
+  }
 }
