@@ -1,7 +1,8 @@
 import { ElementRef, Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
-import { BACKGROUND_STYLES, FRET_STYLES, NECK_STYLES, NUT_STYLES, PageStyleListObject, STRING_STYLES, StyleObject } from '../definitions/styles.definitions';
+import { BACKGROUND_STYLES, FRET_STYLES, NECK_STYLES, NUT_STYLES, PageStyleListObject, STRING_STYLES, StyleObject } from '../../definitions/styles.definitions';
 import { DOCUMENT } from '@angular/common';
 import { Subject } from 'rxjs';
+import { noteModel, noteStyle } from '../../models/note-model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class StylesService {
   fretStyleChanges:Subject<string> = new Subject<string>;
   neckStyleChanges:Subject<string> = new Subject<string>;
   stringStyleChanges:Subject<string> = new Subject<string>;
+  noteStyleChanges:Subject<noteStyle> = new Subject<noteStyle>;
 
   constructor(rendererFactory: RendererFactory2) {
     this.styleList = {
@@ -81,6 +83,10 @@ export class StylesService {
     if (styleObj) {
       this.stringStyleChanges.next(styleObj.style);
     }
+  }
+
+  sendNoteStyleChange(style:noteStyle){
+    this.noteStyleChanges.next(style);
   }
 
   setStyle(element: ElementRef, style: string, value: string): void {

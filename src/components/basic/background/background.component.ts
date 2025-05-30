@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { StylesService } from '../../../services/styles.service';
+import { StylesService } from '../../../services/menu/styles.service';
 
 @Component({
   selector: 'app-background',

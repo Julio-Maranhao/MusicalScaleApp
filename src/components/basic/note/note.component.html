@@ -1,1 +1,9 @@
-<div class="note note-{{size}} bg-black tx-second flex flex-center" [style]="marginLeft()">{{getNoteName()}}</div>
+
+<div
+  class="note note-{{size}} tx-second flex flex-center"
+  [style]="marginLeft()"
+  (click)="onClick()"
+  (contextmenu)="onContextMenu()"
+  #note>
+  {{getNoteName()}}
+</div>

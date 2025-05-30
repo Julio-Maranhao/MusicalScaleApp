@@ -6,6 +6,12 @@ export type noteModel = {
   noteColor:string; // bg-color
 }
 
+export type noteStyle = {
+  note:noteModel;
+  textColor:string;
+  mode:'all' | 'single';
+}
+
 export interface FiltrosNotas {
   noteIds?: number[];       // Lista de IDs de notas para incluir (ex: [0, 2, 4] para C, D, E)
   cordas?: number[];        // Lista de cordas para incluir (ex: [1, 2, 3])

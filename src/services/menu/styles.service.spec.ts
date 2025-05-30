@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { StylesService } from './styles.service';
+import { StylesService } from '../styles.service';
 
 describe('StylesService', () => {
   let service: StylesService;

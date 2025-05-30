@@ -45,6 +45,8 @@ a {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
   line-height: 1.2;
+  scrollbar-width: thin;
+  scrollbar-color: var(--light-gray) var(--first-text-color);
 }
 
 .tx-second {color: var(--second-text-color);}
@@ -132,9 +134,6 @@ a {
 .pd-3 {padding: 3rem;}
 
 
-::-webkit-scrollbar {
-  display: none;
-}
 
 @media screen and (max-width: 768px) {
   .fretboard-container {

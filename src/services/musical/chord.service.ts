@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DefinicaoAcorde, DEFINICOES_ACORDES, NOTA_PARA_ID, NOTE_LIST } from '../definitions/acordes.definitions';
-import { AcordeParse } from '../models/note-model';
+import { DefinicaoAcorde, DEFINICOES_ACORDES, NOTA_PARA_ID, NOTE_LIST } from '../../definitions/acordes.definitions';
+import { AcordeParse } from '../../models/note-model';
 
 @Injectable({
   providedIn: 'root'

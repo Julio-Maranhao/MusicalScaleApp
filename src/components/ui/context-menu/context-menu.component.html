@@ -1,8 +1,3 @@
-<div (contextmenu)="onContextMenu($event)" style="width: 200px; height: 100px; border: 1px solid black;">
-  Right-click here
+<div class="context-menu flex flex-column">
+  <ng-content></ng-content>
 </div>
-<ul id="contextMenu" style="display: none; position: fixed; border: 1px solid #ccc; background-color: white; padding: 5px; list-style: none;">
-  @for (item of menuItems; track $index) {
-    <li (click)="onMenuItemClick(item)">{{item.label}}</li>
-  }
-</ul>

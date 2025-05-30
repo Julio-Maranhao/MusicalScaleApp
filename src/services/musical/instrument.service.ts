@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { musicalInstrumentModel } from '../models/instrument-model';
-import { DEFINICOES_INSTRUMENTOS } from '../definitions/instruments.definitions';
+import { musicalInstrumentModel } from '../../models/instrument-model';
+import { DEFINICOES_INSTRUMENTOS } from '../../definitions/instruments.definitions';
 import { not } from 'rxjs/internal/util/not';
 
 @Injectable({

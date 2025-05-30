@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
 import { noteModel } from '../../../models/note-model';
 import { NoteComponent } from "../note/note.component";
-import { StylesService } from '../../../services/styles.service';
+import { StylesService } from '../../../services/menu/styles.service';
 import { MappingService } from '../../../services/mapping.service';
 
 @Component({

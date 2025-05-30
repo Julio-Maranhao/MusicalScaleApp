@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DEFINICOES_ESCALAS, FormulaEscala } from '../definitions/escalas.definitions';
+import { DEFINICOES_ESCALAS, FormulaEscala } from '../../definitions/escalas.definitions';
 
 @Injectable({
   providedIn: 'root'

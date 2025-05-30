@@ -5,7 +5,7 @@ import { NutComponent } from "../nut/nut.component";
 import { FretComponent } from "../fret/fret.component";
 import { MappingService } from '../../../services/mapping.service';
 import { noteModel } from '../../../models/note-model';
-import { StylesService } from '../../../services/styles.service';
+import { StylesService } from '../../../services/menu/styles.service';
 
 @Component({
   selector: 'app-fretboard',

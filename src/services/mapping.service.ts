@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FiltrosNotas, noteModel } from '../models/note-model';
 import { musicalInstrumentModel } from '../models/instrument-model';
 import { Subject } from 'rxjs';
-import { InstrumentService } from './instrument.service';
+import { InstrumentService } from './musical/instrument.service';
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +43,7 @@ export class MappingService {
           traste: traste,
           noteId: notaId,
           octave: oitava,
-          noteColor: '#fff'
+          noteColor: '#000'
         });
       }
     }
