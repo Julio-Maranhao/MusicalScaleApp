@@ -1,9 +1,10 @@
-import { Component, ElementRef, EventEmitter, Input, Output, signal, ViewChild } from '@angular/core';
+import { Component, ContentChildren, ElementRef, EventEmitter, Input, Output, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
 import { noteModel, noteStyle } from '../../../models/note-model';
 import { ID_PARA_NOTA_PADRAO } from '../../../definitions/acordes.definitions';
 import { StylesService } from '../../../services/menu/styles.service';
 import { Subscription } from 'rxjs';
 import { MenuService } from '../../../services/menu/menu.service';
+import { MenuOptionObject } from '../../../models/other-model';
 
 @Component({
   selector: 'app-note',
@@ -16,7 +17,6 @@ export class NoteComponent {
   @Input() size!:string;
   @Input() note!: noteModel;
   @Input() behavior: 'single' | 'all' = 'single';
-  @Output() noteClickEvent = new EventEmitter<noteModel>();
   @ViewChild('note') noteRef!:ElementRef;
   private styleSubscription: Subscription | undefined;
 
@@ -60,16 +60,14 @@ export class NoteComponent {
     return ID_PARA_NOTA_PADRAO[this.note.noteId];
   }
 
-  onClick(){
+  onClick(event:MouseEvent){
     this.menuService.openNoteContextMenu(this);
+    this.menuService.sendContextMenuPosition(event);
+    event.stopPropagation();
   }
 
   onContextMenu(){
 
-  }
-
-  sendNoteToNoteList(){
-    this.noteClickEvent.emit(this.note);
   }
 
   pickColor(){

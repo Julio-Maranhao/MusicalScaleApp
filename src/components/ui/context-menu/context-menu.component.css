@@ -1,6 +1,12 @@
 .context-menu {
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
   padding: .5rem;
   min-width: 120px;
+  list-style: none;
   background-color: white;
   border-radius: 1rem;
   -webkit-border-radius: 1rem;

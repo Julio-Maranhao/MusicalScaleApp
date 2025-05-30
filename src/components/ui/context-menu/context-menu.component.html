@@ -1,3 +1,6 @@
-<div class="context-menu flex flex-column">
-  <ng-content></ng-content>
-</div>
+<ul class="context-menu flex flex-column" #menu>
+  <li class="flex flex-row pd-3">
+    <label class="pd-1" for="bg-color">Note Color</label>
+    <input type="color" name="bg-color" id="bg-color">
+  </li>
+</ul>

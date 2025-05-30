@@ -2,7 +2,7 @@
 <div
   class="note note-{{size}} tx-second flex flex-center"
   [style]="marginLeft()"
-  (click)="onClick()"
+  (click)="onClick($event)"
   (contextmenu)="onContextMenu()"
   #note>
   {{getNoteName()}}
