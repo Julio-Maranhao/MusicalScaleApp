@@ -1,6 +1,5 @@
 .note {
   position: relative;
-  cursor: pointer;
   transform: translateX(-44px);
   -webkit-transform: translateX(-44px);
   -moz-transform: translateX(-44px);

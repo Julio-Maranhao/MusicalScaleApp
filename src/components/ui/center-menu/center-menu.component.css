@@ -1,0 +1,92 @@
+.menu-container{
+  width: 350px;
+}
+
+.search-input {
+  appearance: none;
+  border: 2px solid black;
+  color: black;
+  padding-left: 1rem;
+  font-weight: 600;
+  font-size: 18px;
+  background-color: transparent;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+}
+
+.search-input::placeholder {
+  color: rgba(0, 0, 0, .3);
+}
+
+.inner-border {
+  border: 2px solid black;
+  color: black;
+  padding-left: 1rem;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.icon-search{
+  color: black;
+  box-sizing: border-box;
+  mask-size: 100%;
+  mask-image: url(../../../../public/ui/configuracoes.svg);
+  background-color: black;
+}
+
+.icon-drop {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  margin-right: .5rem;
+  cursor: pointer;
+  background-color: black;
+  mask-image: url(../../../../public/ui/seta-baixo.svg);
+  box-sizing: border-box
+}
+
+.menu-active {
+  animation: rotate .5s linear infinite;
+  -webkit-animation: rotate .5s linear infinite;
+}
+
+.search-input:focus-visible{
+  outline: none;
+}
+
+.input-bg {
+  background-color: #ffffff55;
+  padding-left: 5px;
+  padding-right: 5px;
+  position: relative;
+}
+
+.options-box {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  transition: all .5s linear;
+  -webkit-transition: all .5s linear;
+  -moz-transition: all .5s linear;
+  -ms-transition: all .5s linear;
+  -o-transition: all .5s linear;
+}
+
+.open {
+  max-height: 600px;
+  opacity: 1;
+  margin-bottom: 1rem;
+}
+
+.note-box {
+  min-height: 50px;
+  gap: .25rem;
+}
+
+@keyframes rotate {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}

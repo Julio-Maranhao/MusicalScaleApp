@@ -4,6 +4,8 @@ export type noteModel = {
   noteId:number; //0-11
   octave:number; //0-8
   noteColor:string; // bg-color
+  textColor?:string; // text-color
+  visibility?:boolean; // para filtro
 }
 
 export type noteStyle = {

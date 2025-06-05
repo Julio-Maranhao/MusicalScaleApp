@@ -1,11 +1,16 @@
+00 - Se com opacity 0 não for possivel clicar na nota - mudar tudo para grid e ajustar nessa ideia
+
 0 - Criar Search menu central com botões para abrir os menus laterais ou dropdown de opções
-1 - Criar Context menu com opções variáveis
+1 - ok - Criar Context menu com opções variáveis
 2 - Criar Side Menu para seleção do tipo de busca (filtro), seleção do acorde, da escala e da tonica
 
 
-      (               🔍) (📖) (⚙)
-      (lista de notas              ) - > ao adicionar notas (duplo click ou context menu)
+      (               🔍) (⚙)
+      (                             ) - Varios menus (Instrumento, Tonica, Acordes, Escalas)
+      Em baixo aparece as opções selecionadas.
+      (lista de notas +             ) - > ao adicionar notas (click)
       (buscar acorde)(buscar escala) - > quando as notas aparecerem dependendo do filtro
+      (escala: C) (C79) (escala: B)(C7Maj) -> Opções da busca e um botão para limpar a busca
 
 
 MENU:

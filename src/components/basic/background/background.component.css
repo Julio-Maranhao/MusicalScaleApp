@@ -9,8 +9,8 @@
   -o-border-radius: 25px;
 }
 
-.background-ap {
-  align-content: center; justify-content: start;flex-wrap: wrap;
+.background-app {
+  justify-content: center;flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {

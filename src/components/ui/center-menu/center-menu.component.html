@@ -1,0 +1,41 @@
+<div class="menu-container flex flex-center flex-column mgn-t3">
+  <div class="flex w-100 mgn-b1">
+    <div class="input-bg h-50px bd-rad25 flex flex-center">
+      <input type="text" class="search-input h-40px bd-rad20" placeholder="Search Chord or Scale">
+    </div>
+    <div class="input-bg h-50px bd-rad25 flex flex-center mgn-lauto pointer">
+      <div class="icon icon-search h-40px w-40px bd-rad20" (click)="toggleOpen($event)"></div>
+    </div>
+  </div>
+  <div class="flex flex-center flex-column flex-gap-2 options-box" [class.open]="isOpen">
+    <div class="input-bg h-50px bd-rad25 flex flex-center w-100">
+      <div class="w-100 h-40px pd-r2 bd-rad20 flex flex-center inner-border">Instrument</div>
+      <div class="icon icon-drop h-40px w-40px"></div>
+    </div>
+    <div class="input-bg h-50px bd-rad25 flex flex-center w-100">
+      <div class="w-100 h-40px pd-r2 bd-rad20 flex flex-center inner-border">Key</div>
+      <div class="icon icon-drop h-40px w-40px"></div>
+    </div>
+    <div class="input-bg h-50px bd-rad25 flex flex-center w-100">
+      <div class="w-100 h-40px pd-r2 bd-rad20 flex flex-center inner-border">Scale</div>
+      <div class="icon icon-drop h-40px w-40px"></div>
+    </div>
+    <div class="input-bg h-50px bd-rad25 flex flex-center w-100">
+      <div class="w-100 h-40px pd-r2 bd-rad20 flex flex-center inner-border">Chord</div>
+      <div class="icon icon-drop h-40px w-40px"></div>
+    </div>
+  </div>
+  <div class="tx-second">Function Name - para indicar a função selecionada</div>
+  <div class="input-bg note-box bd-rad25 flex flex-start-center w-100 border-box" #noteFilter>
+    @for (note of noteList; track $index){
+      <div
+        class="w-40px h-40px bd-rad20 flex flex-center pointer"
+        [style]="generateNoteStyle(note)"
+        (click)="onClick(note)"
+        (contextmenu)="onContextMenu($event, note)"
+      >
+        {{getNoteName(note)}}
+      </div>
+    }
+  </div>
+</div>

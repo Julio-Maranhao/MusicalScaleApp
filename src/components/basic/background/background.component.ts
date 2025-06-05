@@ -1,12 +1,15 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { StylesService } from '../../../services/menu/styles.service';
+import { fadeInOutAnimation, fadeSlideInOutAnimation } from '../../../definitions/animations.definitions';
+import { CenterMenuComponent } from "../../ui/center-menu/center-menu.component";
 
 @Component({
   selector: 'app-background',
   standalone: true,
-  imports: [],
+  imports: [CenterMenuComponent],
   templateUrl: './background.component.html',
-  styleUrl: './background.component.css'
+  styleUrl: './background.component.css',
+  animations: [fadeInOutAnimation, fadeSlideInOutAnimation]
 })
 export class BackgroundComponent {
   @Input() backgroundColor:string = 'white';

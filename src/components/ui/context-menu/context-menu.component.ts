@@ -1,99 +1,148 @@
-import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
 import { MenuService } from '../../../services/menu/menu.service';
 import { MenuOptionObject } from '../../../models/other-model';
 import { Subscription } from 'rxjs';
 import { NoteComponent } from '../../basic/note/note.component';
 import { NgComponentOutlet } from '@angular/common';
-import { noteModel } from '../../../models/note-model';
+import { noteModel, noteStyle } from '../../../models/note-model';
+import { StylesService } from '../../../services/menu/styles.service';
+import { ID_PARA_NOTA_PADRAO } from '../../../definitions/acordes.definitions';
+import { DraggableHostDirective } from '../../../directives/draggable-host.directive';
 
 @Component({
   selector: 'app-context-menu',
   standalone: true,
-  imports: [],
+  imports: [DraggableHostDirective],
   templateUrl: './context-menu.component.html',
   styleUrl: './context-menu.component.css'
 })
 export class ContextMenuComponent {
   @ViewChild('menu') menu!:ElementRef;
+  @ViewChild('noteRef') noteRef!:ElementRef;
+  @ViewChild('visInput') visInput!:ElementRef;
+  @ViewChild(DraggableHostDirective, { static: false })
+  draggableHost?: DraggableHostDirective;
   note:noteModel | undefined;
   behavior!: 'all' | 'single';
+  textAutoColor:boolean = false;
+  isFixed = false;
+  private styleBase!:noteStyle;
   private subscription:Subscription | undefined;
-  private isDragging = false;
-  private isFixed = true;
-  private offsetX = 0;
-  private offsetY = 0;
+  private isSelecting = false;
 
-  constructor(private menuService: MenuService) {
+  constructor(
+    private menuService: MenuService,
+    private stylesService: StylesService
+  ) {
     menuService.onNoteMenuChanges.subscribe({
       next: (noteComponent: NoteComponent) => {
         if (this.menu) {
           this.note = noteComponent.note;
+          if(Object.keys(noteComponent.note).includes('visibility')) {
+            this.visInput.nativeElement.checked = this.note.visibility;
+            this.setNoteVisibility();
+          }
           this.behavior = noteComponent.behavior;
           this.menu.nativeElement.style.display = 'block';
+          this.stylesService.setStyle(this.noteRef, 'background-color', noteComponent.note.noteColor);
+          const txColor = Object.keys(this.note).includes('textColor')? this.note.textColor : noteComponent.noteRef.nativeElement.style.color;
+          this.stylesService.setStyle(this.noteRef, 'color', txColor);
+          this.styleBase = {
+            note:noteComponent.note,
+            textColor:txColor,
+            mode:noteComponent.behavior
+          }
         }
       }
     });
     menuService.onMenuPositionChanges.subscribe({
       next: (event) => {
         if (this.menu && !this.isFixed) {
-          this.menu.nativeElement.style.left = window.innerWidth/2 - this.menu.nativeElement.offsetWidth/2 + 'px';
-          this.menu.nativeElement.style.top = window.innerHeight/2 - this.menu.nativeElement.offsetHeight/2 + 'px';
+          this.draggableHost?.moveToViewportCenter();
         }
       }
     })
   }
 
-  toggleFixed(){
-    this.isFixed = !this.isFixed;
+  ngOnInit(){}
+
+  //Funcionalidades
+  changeNoteColor(event:Event){
+    const color = (event.target as HTMLInputElement).value || '#000000';
+    this.styleBase.note.noteColor = color;
+    this.stylesService.setStyle(this.noteRef, 'background-color', color);
+    // this.stylesService.sendNoteStyleChange(style);
   }
 
-  ngOnInit(){
+  endSelection(){setTimeout(()=>{this.isSelecting = false},100)}
+  startSelection(){this.isSelecting = true}
+
+  changeTextColor(event:Event){
+    const color = (event.target as HTMLInputElement).value || '#ffffff';
+    this.styleBase.textColor = color;
+    this.stylesService.setStyle(this.noteRef, 'color', color);
+    // this.stylesService.sendNoteStyleChange(style);
   }
 
+  toggleTextAutoColor(event:boolean){
+    this.textAutoColor = event;
+  }
+
+  setNoteVisibility(){
+    const isVisible = this.visInput.nativeElement.checked;
+    this.note!.visibility = isVisible;
+    if (isVisible) {
+      this.stylesService.setStyle(this.noteRef, 'opacity', '1');
+    } else {
+      this.stylesService.setStyle(this.noteRef, 'opacity', '.2');
+    }
+  }
+
+  sendNoteToFilterList(){
+    if (this.note){
+      this.menuService.addNoteToFilterList(this.note);
+    }
+  }
+
+  applyAll(){
+    const newStyle = {...this.styleBase};
+    newStyle.mode = 'all';
+    this.stylesService.sendNoteStyleChange(newStyle);
+    this.isSelecting = false;
+  }
+
+  apply(){
+    const newStyle = {...this.styleBase};
+    newStyle.mode = 'single';
+    this.stylesService.sendNoteStyleChange(newStyle);
+    this.isSelecting = false;
+  }
+
+  reset(){
+    this.styleBase.note.noteColor = '#000000';
+    this.styleBase.textColor = '#ffffff';
+    this.styleBase.mode = 'single';
+    this.styleBase.note.visibility = true;
+    this.stylesService.setStyle(this.noteRef, 'background-color', 'black');
+    this.stylesService.setStyle(this.noteRef, 'color', 'white');
+    this.stylesService.setStyle(this.noteRef, 'opacity', '1');
+  }
+
+  cancel(){
+    this.menu.nativeElement.style.display = 'none';
+    this.isSelecting = false;
+  }
+
+  // Funções de estado e UI
+  toggleFixed(){this.isFixed = !this.isFixed;}
+  getNoteName(){if(!this.note){return ''};return ID_PARA_NOTA_PADRAO[this.note!.noteId];}
+
+  // Fecha quando clica fora
   @HostListener('document:click', ['$event'])
   onOutsideClick(event: Event) {
+    if (this.isSelecting){return};
     if (this.menu && !this.menu.nativeElement.contains(event.target)) {
       this.menu.nativeElement.style.display = 'none';
-    }
-  }
-
-   @HostListener('mousedown', ['$event'])
-  onHostMouseDown(event: MouseEvent) {
-    // Verifica se o elemento do menu existe, está visível e o clique foi dentro dele
-    if (
-      this.menu &&
-      this.menu.nativeElement &&
-      this.menu.nativeElement.style.display === 'block' &&
-      this.menu.nativeElement.contains(event.target as Node)
-    ) {
-      event.preventDefault(); // Previne seleção de texto ou outros comportamentos padrão
-
-      this.isDragging = true;
-
-      // Calcula o deslocamento do clique do mouse em relação ao canto superior esquerdo do menu
-      const menuRect = this.menu.nativeElement.getBoundingClientRect();
-      this.offsetX = event.clientX - menuRect.left;
-      this.offsetY = event.clientY - menuRect.top;
-    }
-  }
-
-  @HostListener('document:mousemove', ['$event'])
-  onDocumentMouseMove(event: MouseEvent) {
-    if (this.isDragging && this.menu && this.menu.nativeElement) {
-      event.preventDefault(); // Previne seleção de texto durante o arraste
-
-      const newLeft = event.clientX - this.offsetX;
-      const newTop = event.clientY - this.offsetY;
-
-      this.menu.nativeElement.style.left = `${newLeft}px`;
-      this.menu.nativeElement.style.top = `${newTop}px`;
-    }
-  }
-
-  @HostListener('document:mouseup', ['$event'])
-  onDocumentMouseUp(event: MouseEvent) {
-    if (this.isDragging) {
-      this.isDragging = false;
     }
   }
 

@@ -1,6 +1,56 @@
-<ul class="context-menu flex flex-column" #menu>
-  <li class="flex flex-row pd-3">
-    <label class="pd-1" for="bg-color">Note Color</label>
-    <input type="color" name="bg-color" id="bg-color">
+<ul class="context-menu flex flex-column" #menu appDraggableHost>
+  <li class="flex flex-row flex-start-center pd-1 relative">
+    <div class="note-medium flex flex-center" #noteRef>{{getNoteName()}}</div>
+    <p class="flex flex-center pd-l1">Preview</p>
+    <div
+      class="toggle-fixed" (click)="toggleFixed()"
+      [class.fixed]="isFixed" [class.unfixed]="!isFixed"
+      ></div>
+  </li>
+  <li class="flex flex-row flex-start-center pd-1">
+    <label class="option flex flex-column relative pointer z-1" for="bg-color">
+      Change Note Color
+      <input class="input-hidden pointer" type="color" name="bg-color" id="bg-color" (input)="changeNoteColor($event)" (change)="endSelection()" (click)="startSelection()">
+    </label>
+  </li>
+  <li class="flex flex-row flex-start-center pd-1">
+    <label class="option flex flex-column relative pointer z-1" for="bg-color">
+      Change Text Color
+      <input class="input-hidden pointer" type="color" name="bg-color" id="bg-color" (input)="changeTextColor($event)" (change)="endSelection()" (click)="startSelection()">
+    </label>
+  </li>
+  <li class="flex flex-row flex-start-center pd-1">
+    <span class="option option-slider flex flex-column relative pointer z-1">
+      Note Visibility
+    </span>
+    <span class="toggle-button mgn-lauto" (click)="visInput.click()" [class.toggle-active]="visInput.checked"></span>
+  </li>
+  <input type="checkbox" id="visibility" (click)="setNoteVisibility()" hidden #visInput>
+  @if(behavior === 'single'){
+    <li class="flex flex-row flex-start-center pd-1">
+      <span class="option flex flex-column relative pointer z-1" (click)="sendNoteToFilterList()">
+        Add Note to Filter
+      </span>
+    </li>
+    <li class="flex flex-row flex-start-center pd-1">
+      <span class="option flex flex-column relative pointer z-1" (click)="apply()">
+        Apply Changes
+      </span>
+    </li>
+  }
+  <li class="flex flex-row flex-start-center pd-1">
+    <span class="option flex flex-column relative pointer z-1" (click)="applyAll()">
+      Apply To All
+    </span>
+  </li>
+  <li class="flex flex-row flex-start-center pd-1">
+    <span class="option flex flex-column relative pointer z-1" (click)="reset()">
+      Reset
+    </span>
+  </li>
+  <li class="flex flex-row flex-start-center pd-1">
+    <span class="option flex flex-column relative pointer z-1" (click)="cancel()">
+      Cancel
+    </span>
   </li>
 </ul>

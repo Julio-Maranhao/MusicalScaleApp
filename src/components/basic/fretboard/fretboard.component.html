@@ -1,4 +1,4 @@
-<div class="fretboard" #fretboard>
+<div class="fretboard" @fadeInOut #fretboard>
   @if (instrument) {
     <div class="frets flex flex-row">
       <app-nut color="bone"/>
@@ -8,7 +8,7 @@
     </div>
     <div class="strings flex flex-column">
       @for (tuning of instrument.baiscTuning; track $index) {
-        <app-string [notes]="notes" class="note-space-{{instrument.appearence.noteSize}}" [stringNumber]="tuning.corda"/>
+        <app-string [fretQtd]="instrument.fretNumber" [notes]="notes" class="note-space-{{instrument.appearence.noteSize}}" [stringNumber]="tuning.corda"/>
       }
     </div>
   }

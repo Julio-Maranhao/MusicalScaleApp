@@ -43,7 +43,9 @@ export class MappingService {
           traste: traste,
           noteId: notaId,
           octave: oitava,
-          noteColor: '#000'
+          noteColor: '#000',
+          visibility: true,
+          textColor: '#ffffff'
         });
       }
     }
@@ -71,20 +73,53 @@ export class MappingService {
 
     // Filtrar por noteId
     if (filtros.noteIds && filtros.noteIds.length > 0) {
-      notasFiltradas = notasFiltradas.filter(nota => filtros.noteIds!.includes(nota.noteId));
+      notasFiltradas = notasFiltradas.map(nota => {
+        if (! filtros.noteIds!.includes(nota.noteId)){
+          nota.visibility = false;
+          return nota;
+        }else{
+          nota.visibility = true;
+          return nota;
+        }
+      });
     }
 
     // Filtrar por corda
     if (filtros.cordas && filtros.cordas.length > 0) {
-      notasFiltradas = notasFiltradas.filter(nota => filtros.cordas!.includes(nota.corda));
+      notasFiltradas = notasFiltradas.map(nota => {
+        if (!filtros.cordas!.includes(nota.corda)){
+          nota.visibility = true;
+          return nota;
+        }else{
+          nota.visibility = false;
+          return nota;
+        }
+      });
     }
 
     // Filtrar por intervalo de trastes
     if (typeof filtros.trasteMin === 'number') {
-      notasFiltradas = notasFiltradas.filter(nota => nota.traste >= filtros.trasteMin!);
+      notasFiltradas = notasFiltradas.map(nota => {
+        if (nota.traste <= filtros.trasteMin!){
+          nota.visibility = false;
+          return nota;
+        }else{
+          nota.visibility = true;
+          return nota;
+        }
+      });
     }
+
     if (typeof filtros.trasteMax === 'number') {
-      notasFiltradas = notasFiltradas.filter(nota => nota.traste <= filtros.trasteMax!);
+      notasFiltradas = notasFiltradas.map(nota => {
+        if (nota.traste >= filtros.trasteMax!){
+          nota.visibility = false;
+          return nota;
+        }else{
+          nota.visibility = true;
+          return nota;
+        }
+      });
     }
 
     this.onNotesChange.next(notasFiltradas);

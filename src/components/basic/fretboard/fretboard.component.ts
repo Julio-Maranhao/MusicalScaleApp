@@ -6,13 +6,15 @@ import { FretComponent } from "../fret/fret.component";
 import { MappingService } from '../../../services/mapping.service';
 import { noteModel } from '../../../models/note-model';
 import { StylesService } from '../../../services/menu/styles.service';
+import { fadeInOutAnimation, listAnimation } from '../../../definitions/animations.definitions';
 
 @Component({
   selector: 'app-fretboard',
   standalone: true,
   imports: [StringComponent, NutComponent, FretComponent],
   templateUrl: './fretboard.component.html',
-  styleUrl: './fretboard.component.css'
+  styleUrl: './fretboard.component.css',
+  animations: [fadeInOutAnimation, listAnimation]
 })
 export class FretboardComponent {
   @Input() color:string = 'mapple';

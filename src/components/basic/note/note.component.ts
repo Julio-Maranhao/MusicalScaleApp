@@ -4,7 +4,6 @@ import { ID_PARA_NOTA_PADRAO } from '../../../definitions/acordes.definitions';
 import { StylesService } from '../../../services/menu/styles.service';
 import { Subscription } from 'rxjs';
 import { MenuService } from '../../../services/menu/menu.service';
-import { MenuOptionObject } from '../../../models/other-model';
 
 @Component({
   selector: 'app-note',
@@ -18,6 +17,7 @@ export class NoteComponent {
   @Input() note!: noteModel;
   @Input() behavior: 'single' | 'all' = 'single';
   @ViewChild('note') noteRef!:ElementRef;
+  visibility = true;
   private styleSubscription: Subscription | undefined;
 
   fretSpaceBase = 1.5;
@@ -27,11 +27,18 @@ export class NoteComponent {
   constructor(private stylesService: StylesService, private menuService:MenuService){}
 
   ngOnInit(){
+    if (this.note.visibility !== undefined && this.note.visibility !== null) {
+      this.visibility = this.note.visibility;
+    }
     this.styleSubscription = this.stylesService.noteStyleChanges.subscribe(style => {
       if (style.mode == 'all') {
         if (style.note.noteId == this.note.noteId) {
+          this.note.noteColor = style.note.noteColor;
+          this.note.textColor = style.textColor;
+          this.note.visibility = style.note.visibility;
           this.stylesService.setStyle(this.noteRef, 'background', style.note.noteColor);
           this.stylesService.setStyle(this.noteRef, 'color', style.textColor);
+          this.visibility = style.note.visibility!;
         }
       } else {
         if (
@@ -39,9 +46,18 @@ export class NoteComponent {
           style.note.traste == this.note.traste &&
           style.note.corda == this.note.corda
         ) {
+          this.note.noteColor = style.note.noteColor;
+          this.note.textColor = style.textColor;
+          this.note.visibility = style.note.visibility;
           this.stylesService.setStyle(this.noteRef, 'background', style.note.noteColor);
           this.stylesService.setStyle(this.noteRef, 'color', style.textColor);
+          this.visibility = style.note.visibility!;
         }
+      }
+      if (this.visibility) {
+        this.stylesService.setStyle(this.noteRef, 'opacity', '1');
+      } else {
+        this.stylesService.setStyle(this.noteRef, 'opacity', '.2');
       }
     });
     let leftMargin = -.82 + this.fretSpaceBase * (this.maxFrets - (this.note.traste-1));
@@ -60,14 +76,31 @@ export class NoteComponent {
     return ID_PARA_NOTA_PADRAO[this.note.noteId];
   }
 
+  getNoteTraste(){
+    return this.note.traste;
+  }
+
+  getNoteCorda(){
+    return this.note.corda;
+  }
+
   onClick(event:MouseEvent){
+    this.menuService.addNoteToFilterList(this.note);
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  onContextMenu(event:MouseEvent){
+    // if(this.note.visibility == false){return};
+    event.preventDefault();
     this.menuService.openNoteContextMenu(this);
     this.menuService.sendContextMenuPosition(event);
     event.stopPropagation();
   }
 
-  onContextMenu(){
-
+  onDoubleClick(event:Event){
+    event.preventDefault();
+    console.log('double click')
   }
 
   pickColor(){

@@ -86,6 +86,7 @@ export class StylesService {
   }
 
   sendNoteStyleChange(style:noteStyle){
+    style.note.textColor = style.textColor;
     this.noteStyleChanges.next(style);
   }
 

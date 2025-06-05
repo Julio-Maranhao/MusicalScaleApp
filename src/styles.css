@@ -125,15 +125,188 @@ a {
 .content-center{justify-content: center;}
 .content-end{justify-content: end;}
 
-.pointer {cursor: pointer;}
+.self-center{align-self: center;}
+.self-start{align-self: start;}
+.self-end{align-self: end;}
+.self-stretch{align-self: stretch;}
 
+.relative {position: relative;}
+.absolute {position: absolute;}
+.fixed {position: fixed;}
+
+.pointer {cursor: pointer;}
 .overflow {overflow: auto;}
 
+.h-20px {height: 20px;}
+.h-30px {height: 30px;}
+.h-40px {height: 40px;}
+.h-50px {height: 50px;}
+
+.h-100 {height: 100%;}
+
+.w-40px {width: 40px;}
+.w-50px {width: 50px;}
+.w-100px {width: 100px;}
+.w-150px {width: 150px;}
+.w-200px {width: 200px;}
+.w-250px {width: 250px;}
+.w-300px {width: 300px;}
+.w-350px {width: 350px;}
+
+.w-100 {width: 100%;}
+
+.bd-rad10 {border-radius: 10px;}
+.bd-rad15 {border-radius: 15px;}
+.bd-rad20 {border-radius: 20px;}
+.bd-rad25 {border-radius: 25px;}
+.bd-rad30 {border-radius: 30px;}
+
+.pd-0 {padding: 0;}
 .pd-1 {padding: 1rem;}
 .pd-2 {padding: 2rem;}
 .pd-3 {padding: 3rem;}
+.pd-4 {padding: 4rem;}
+.pd-5 {padding: 5rem;}
+.pd-6 {padding: 6rem;}
 
+.pd-l0 {padding-left: 0;}
+.pd-l1 {padding-left: 1rem;}
+.pd-l2 {padding-left: 2rem;}
+.pd-l3 {padding-left: 3rem;}
+.pd-l4 {padding-left: 4rem;}
+.pd-l5 {padding-left: 5rem;}
+.pd-l6 {padding-left: 6rem;}
 
+.pd-r0 {padding-right: 0;}
+.pd-r1 {padding-right: 1rem;}
+.pd-r2 {padding-right: 2rem;}
+.pd-r3 {padding-right: 3rem;}
+.pd-r4 {padding-right: 4rem;}
+.pd-r5 {padding-right: 5rem;}
+.pd-r6 {padding-right: 6rem;}
+
+.pd-b0 {padding-bottom: 0;}
+.pd-b1 {padding-bottom: 1rem;}
+.pd-b2 {padding-bottom: 2rem;}
+.pd-b3 {padding-bottom: 3rem;}
+.pd-b4 {padding-bottom: 4rem;}
+.pd-b5 {padding-bottom: 5rem;}
+.pd-b6 {padding-bottom: 6rem;}
+
+.pd-t0 {padding-top: 0;}
+.pd-t1 {padding-top: 1rem;}
+.pd-t2 {padding-top: 2rem;}
+.pd-t3 {padding-top: 3rem;}
+.pd-t4 {padding-top: 4rem;}
+.pd-t5 {padding-top: 5rem;}
+.pd-t6 {padding-top: 6rem;}
+
+.mgn-0 {margin: 0;}
+.mgn-1 {margin: 1rem;}
+.mgn-2 {margin: 2rem;}
+.mgn-3 {margin: 3rem;}
+.mgn-4 {margin: 4rem;}
+.mgn-5 {margin: 5rem;}
+.mgn-6 {margin: 6rem;}
+
+.mgn-lauto {margin-left: auto;}
+.mgn-rauto {margin-right: auto;}
+
+.mgn-l0 {margin-left: 0;}
+.mgn-l1 {margin-left: 1rem;}
+.mgn-l2 {margin-left: 2rem;}
+.mgn-l3 {margin-left: 3rem;}
+.mgn-l4 {margin-left: 4rem;}
+.mgn-l5 {margin-left: 5rem;}
+.mgn-l6 {margin-left: 6rem;}
+
+.mgn-r0 {margin-right: 0;}
+.mgn-r1 {margin-right: 1rem;}
+.mgn-r2 {margin-right: 2rem;}
+.mgn-r3 {margin-right: 3rem;}
+.mgn-r4 {margin-right: 4rem;}
+.mgn-r5 {margin-right: 5rem;}
+.mgn-r6 {margin-right: 6rem;}
+
+.mgn-b0 {margin-bottom: 0;}
+.mgn-b1 {margin-bottom: 1rem;}
+.mgn-b2 {margin-bottom: 2rem;}
+.mgn-b3 {margin-bottom: 3rem;}
+.mgn-b4 {margin-bottom: 4rem;}
+.mgn-b5 {margin-bottom: 5rem;}
+.mgn-b6 {margin-bottom: 6rem;}
+
+.mgn-t0 {margin-top: 0;}
+.mgn-t1 {margin-top: 1rem;}
+.mgn-t2 {margin-top: 2rem;}
+.mgn-t3 {margin-top: 3rem;}
+.mgn-t4 {margin-top: 4rem;}
+.mgn-t5 {margin-top: 5rem;}
+.mgn-t6 {margin-top: 6rem;}
+
+.op-1 {opacity: 1;}
+.op-0 {opacity: 0;}
+
+.z-0 {z-index: 0;}
+.z-1 {z-index: 1;}
+.z-2 {z-index: 2;}
+.z-3 {z-index: 3;}
+.z-4 {z-index: 4;}
+.z-5 {z-index: 5;}
+.z-6 {z-index: 6;}
+
+.border-box {box-sizing: border-box;}
+.content-box {box-sizing: content-box;}
+.icon {mask-size: contain; mask-repeat: no-repeat; mask-position:center;}
+
+.toggle-button{
+  position: relative;
+  height: 20px;
+  width: 40px;
+  border-radius: 10px;
+  background-color: #dd250d;
+  box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.43) inset;
+  -webkit-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.43) inset;
+  -moz-box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.43) inset;
+
+}
+
+.toggle-active {
+  background-color: #248d0a;
+}
+
+.toggle-active.toggle-button::after {
+  left: 20px;
+}
+
+.toggle-button::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #cecece;
+  transition: all .2s linear;
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  box-shadow: -1px -1px 2px 0px rgba(0,0,0,0.43);
+  -webkit-box-shadow: -1px -1px 2px 0px rgba(0,0,0,0.43);
+  -moz-box-shadow: -1px -1px 2px 0px rgba(0,0,0,0.43);
+}
+
+.input-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
 
 @media screen and (max-width: 768px) {
   .fretboard-container {

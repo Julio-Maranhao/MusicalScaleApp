@@ -1,9 +1,11 @@
 
 <div
-  class="note note-{{size}} tx-second flex flex-center"
+  class="note note-{{size}} tx-second flex flex-center pointer"
   [style]="marginLeft()"
   (click)="onClick($event)"
-  (contextmenu)="onContextMenu()"
+  (dblclick)="onDoubleClick($event)"
+  (contextmenu)="onContextMenu($event)"
+  [title]="'traste: ' + getNoteTraste()"
   #note>
   {{getNoteName()}}
 </div>
