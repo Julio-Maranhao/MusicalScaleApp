@@ -62,12 +62,16 @@
   position: relative;
 }
 
+.notes-bg {
+  background-color: #ffffff55;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
 .options-box {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  padding-left: .5rem;
-  padding-right: .5rem;
   transition: all .5s linear;
   -webkit-transition: all .5s linear;
   -moz-transition: all .5s linear;

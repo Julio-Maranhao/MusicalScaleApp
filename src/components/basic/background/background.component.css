@@ -10,7 +10,7 @@
 }
 
 .background-app {
-  justify-content: center;flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 768px) {

@@ -19,7 +19,6 @@ import { DraggableHostDirective } from '../../../directives/draggable-host.direc
 export class ContextMenuComponent {
   @ViewChild('menu') menu!:ElementRef;
   @ViewChild('noteRef') noteRef!:ElementRef;
-  @ViewChild('visInput') visInput!:ElementRef;
   @ViewChild(DraggableHostDirective, { static: false })
   draggableHost?: DraggableHostDirective;
   note:noteModel | undefined;
@@ -38,10 +37,6 @@ export class ContextMenuComponent {
       next: (noteComponent: NoteComponent) => {
         if (this.menu) {
           this.note = noteComponent.note;
-          if(Object.keys(noteComponent.note).includes('visibility')) {
-            this.visInput.nativeElement.checked = this.note.visibility;
-            this.setNoteVisibility();
-          }
           this.behavior = noteComponent.behavior;
           this.menu.nativeElement.style.display = 'block';
           this.stylesService.setStyle(this.noteRef, 'background-color', noteComponent.note.noteColor);
@@ -86,22 +81,6 @@ export class ContextMenuComponent {
 
   toggleTextAutoColor(event:boolean){
     this.textAutoColor = event;
-  }
-
-  setNoteVisibility(){
-    const isVisible = this.visInput.nativeElement.checked;
-    this.note!.visibility = isVisible;
-    if (isVisible) {
-      this.stylesService.setStyle(this.noteRef, 'opacity', '1');
-    } else {
-      this.stylesService.setStyle(this.noteRef, 'opacity', '.2');
-    }
-  }
-
-  sendNoteToFilterList(){
-    if (this.note){
-      this.menuService.addNoteToFilterList(this.note);
-    }
   }
 
   applyAll(){

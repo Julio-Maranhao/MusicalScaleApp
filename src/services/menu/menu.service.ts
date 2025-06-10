@@ -30,14 +30,16 @@ export class MenuService {
   }
 
   addNoteToFilterList(note:noteModel){
-    if (this.noteList.includes(note)){return}
+    const sameNoteIDs = this.noteList.filter(n => n.noteId == note.noteId);
+    if (sameNoteIDs.length > 0) {this.removeNoteFromFilterList(note); return}
     this.noteList.push(note);
     this.onNoteListChanges.next(this.noteList);
   }
 
   removeNoteFromFilterList(note:noteModel){
-    if (this.noteList.includes(note)) {
-      this.noteList.splice(this.noteList.indexOf(note), 1);
+    const noteToRemove = this.noteList.find(n => n.noteId == note.noteId);
+    if (noteToRemove) {
+      this.noteList.splice(this.noteList.indexOf(noteToRemove), 1);
       this.onNoteListChanges.next(this.noteList);
     }
   }

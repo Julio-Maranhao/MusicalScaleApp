@@ -57,7 +57,7 @@ export class NoteComponent {
       if (this.visibility) {
         this.stylesService.setStyle(this.noteRef, 'opacity', '1');
       } else {
-        this.stylesService.setStyle(this.noteRef, 'opacity', '.2');
+        this.stylesService.setStyle(this.noteRef, 'opacity', '0');
       }
     });
     let leftMargin = -.82 + this.fretSpaceBase * (this.maxFrets - (this.note.traste-1));

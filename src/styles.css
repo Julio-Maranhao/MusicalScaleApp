@@ -153,7 +153,13 @@ a {
 .w-300px {width: 300px;}
 .w-350px {width: 350px;}
 
+.w-40 {width: 40%;}
+.w-45 {width: 47.5%;}
+.w-50 {width: 50%;}
+.w-75 {width: 75%;}
 .w-100 {width: 100%;}
+
+
 
 .bd-rad10 {border-radius: 10px;}
 .bd-rad15 {border-radius: 15px;}

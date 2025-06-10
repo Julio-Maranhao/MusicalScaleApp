@@ -1,15 +1,11 @@
 <div class="fretboard" @fadeInOut #fretboard>
-  @if (instrument) {
-    <div class="frets flex flex-row">
-      <app-nut color="bone"/>
-      @for (n of getRange(instrument.fretNumber); track $index) {
-        <app-fret [fretNumber]="$index" color="gray" [noteSize]="'medium'"/>
-      }
-    </div>
-    <div class="strings flex flex-column">
-      @for (tuning of instrument.baiscTuning; track $index) {
-        <app-string [fretQtd]="instrument.fretNumber" [notes]="notes" class="note-space-{{instrument.appearence.noteSize}}" [stringNumber]="tuning.corda"/>
-      }
-    </div>
+  <div class="neck-bg" [style]="getNeckGridArea()" #neckBg></div>
+  <app-nut class="nut" color="bone"/>
+  @for (n of getRange(instrument.fretNumber); track $index) {
+    <app-fret class="fret" [fretNumber]="$index" color="gray" [noteSize]="'medium'" [style]="getFretGridArea($index)" #fret/>
   }
+  @for (tuning of instrument.baiscTuning; track $index) {
+    <app-string class="string" [style]="getStringGridArea($index)" [fretQtd]="instrument.fretNumber" [notes]="notes" class="note-space-{{instrument.appearence.noteSize}}" [stringNumber]="tuning.corda"/>
+  }
+
 </div>

@@ -1,8 +1,26 @@
-00 - Se com opacity 0 não for possivel clicar na nota - mudar tudo para grid e ajustar nessa ideia
+0 - Ficou faltando os DOTS, NOTES, FILTER NOTES, FRET NUMBER E SVG
+1 - Menu será side menu fininho com as ferramentas: Escala, Acorde, Filtro, Adicionar Braço, Cores,
+  Desenho e Outras coisas
+2 - Fretboard terá camadas - Área Externa(desenho), SVG (Desenho - no Background), Neck(z-0), Trastes(z-1), Dots(z-1)
+  Numeros de casa (z-1), Cordas(z-2), allNotes(z-3)(hover-show), filter Notes (z-4)(notas visiveis)
+3 - Adicionar no modelo de nota {
+  noteName:string;
+  neckID: number
+}
+4 - Colocar ID no neck
 
-0 - Criar Search menu central com botões para abrir os menus laterais ou dropdown de opções
-1 - ok - Criar Context menu com opções variáveis
-2 - Criar Side Menu para seleção do tipo de busca (filtro), seleção do acorde, da escala e da tonica
+
+
+
+1 - Auto reset visibility com a noteList vazia menuService
+2 - Função de reset no menuService e botão de reset no centerMenu
+3 - Center menu options:
+  3.1 - Color Schemes ex:(Red, Blue, blue...) tonica red e resto blue
+  3.2 - Instrument selection, [edit(context-menu), create (open Modal)]
+  3.3 - Functions: Scale, Chord, Shape, Filter String, Filter Frets(filtrar cordas e trastes)
+  3.4 - No espaço dos filters, aparecer também cordas e intervalo de trastes (max) (min)
+  3.5 - Não entrar noteId duplicado no filter
+4 - Filter drag reorder add Drag
 
 
       (               🔍) (⚙)
@@ -11,6 +29,11 @@
       (lista de notas +             ) - > ao adicionar notas (click)
       (buscar acorde)(buscar escala) - > quando as notas aparecerem dependendo do filtro
       (escala: C) (C79) (escala: B)(C7Maj) -> Opções da busca e um botão para limpar a busca
+
+MODAL:
+1 - Modal para criação de instrumentos com a seleção de todas as cores
+2 - Componente de criação de gradient
+3 - Botão preview opacity 0.1
 
 
 MENU:

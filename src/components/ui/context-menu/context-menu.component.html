@@ -19,19 +19,7 @@
       <input class="input-hidden pointer" type="color" name="bg-color" id="bg-color" (input)="changeTextColor($event)" (change)="endSelection()" (click)="startSelection()">
     </label>
   </li>
-  <li class="flex flex-row flex-start-center pd-1">
-    <span class="option option-slider flex flex-column relative pointer z-1">
-      Note Visibility
-    </span>
-    <span class="toggle-button mgn-lauto" (click)="visInput.click()" [class.toggle-active]="visInput.checked"></span>
-  </li>
-  <input type="checkbox" id="visibility" (click)="setNoteVisibility()" hidden #visInput>
   @if(behavior === 'single'){
-    <li class="flex flex-row flex-start-center pd-1">
-      <span class="option flex flex-column relative pointer z-1" (click)="sendNoteToFilterList()">
-        Add Note to Filter
-      </span>
-    </li>
     <li class="flex flex-row flex-start-center pd-1">
       <span class="option flex flex-column relative pointer z-1" (click)="apply()">
         Apply Changes

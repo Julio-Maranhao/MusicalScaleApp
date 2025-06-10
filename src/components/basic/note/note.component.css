@@ -17,7 +17,7 @@
 }
 
 .note:hover {
-  opacity: .9;
+  opacity: .8 !important;
 }
 
 @media screen and (max-width: 768px) {

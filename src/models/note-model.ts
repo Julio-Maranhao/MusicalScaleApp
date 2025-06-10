@@ -6,6 +6,9 @@ export type noteModel = {
   noteColor:string; // bg-color
   textColor?:string; // text-color
   visibility?:boolean; // para filtro
+  noteName?:string; // Nome da nota (1,3,5,7 ; G# ou Ab; I, III, V, VII, IX, XIII) Lista no Fretboard
+  neckId?:number; // Id do braço para o caso de multiplos braços
+  onHover?: 'none' | 'show'; // mode to hover (none, show)
 }
 
 export type noteStyle = {
