@@ -1,13 +1,11 @@
-0 - Ficou faltando os DOTS, NOTES, FILTER NOTES, FRET NUMBER E SVG
+0 - Ficou faltando os DOTS, NOTES, FILTER NOTES, FRET NUMBER E SVG - Tirar as notes da Corda
 1 - Menu será side menu fininho com as ferramentas: Escala, Acorde, Filtro, Adicionar Braço, Cores,
-  Desenho e Outras coisas
+  Desenho, ZOOM in e ZOOM out e Outras coisas
 2 - Fretboard terá camadas - Área Externa(desenho), SVG (Desenho - no Background), Neck(z-0), Trastes(z-1), Dots(z-1)
   Numeros de casa (z-1), Cordas(z-2), allNotes(z-3)(hover-show), filter Notes (z-4)(notas visiveis)
-3 - Adicionar no modelo de nota {
-  noteName:string;
-  neckID: number
-}
-4 - Colocar ID no neck
+3 - Um Container DIV do fretboard para centralizar, e aplicar os paddings necessários
+4 - Um Container DIV do conjunto de Fretboards para aplicação do ZOOM e conter o canvas so SVG
+5 - Tirar a rotação do fretboard em telas menores, aplicar zoom.
 
 
 
