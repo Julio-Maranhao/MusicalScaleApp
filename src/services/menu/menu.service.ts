@@ -74,6 +74,8 @@ export class MenuService {
         traste: 0,
         corda: 0,
         noteColor: '#000000',
+        textColor: '#ffffff',
+        noteName: NOTE_LIST[noteId],
         octave: 0,
         visibility: false
       }
@@ -86,7 +88,6 @@ export class MenuService {
       }
       const newStyle:noteStyle = {
         note: note,
-        textColor: 'white',
         mode: 'all'
       }
       this.styleService.sendNoteStyleChange(newStyle)

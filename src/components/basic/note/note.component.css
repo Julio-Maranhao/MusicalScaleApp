@@ -1,12 +1,3 @@
-.note {
-  position: relative;
-  transform: translateX(-44px);
-  -webkit-transform: translateX(-44px);
-  -moz-transform: translateX(-44px);
-  -ms-transform: translateX(-44px);
-  -o-transform: translateX(-44px);
-}
-
 .color-picker {
   position: absolute;
   top: 0;
@@ -20,12 +11,3 @@
   opacity: .8 !important;
 }
 
-@media screen and (max-width: 768px) {
-  .note{
-    transform: rotate(-90deg) translateY(-44px) !important;
-    -webkit-transform: rotate(-90deg) translateY(-44px) !important;
-    -moz-transform: rotate(-90deg) translateY(-44px) !important;
-    -ms-transform: rotate(-90deg) translateY(-44px) !important;
-    -o-transform: rotate(-90deg) translateY(-44px) !important;
-  }
-}

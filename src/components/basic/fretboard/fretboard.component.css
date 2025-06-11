@@ -28,6 +28,34 @@
   padding-left: 2rem;
 }
 
+.dots {
+  z-index: 3;
+  justify-content: space-around;
+}
+
+.dot {
+  background-color: white;
+  border: 1px solid black;
+  height: 24px;
+  width: 24px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.note {
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: content-box;
+  justify-content: center;
+  align-content: center;
+  margin-right: 4px;
+}
+
 
 @media screen and (max-width: 768px) {
   .fretboard{

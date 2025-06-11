@@ -13,7 +13,6 @@ export type noteModel = {
 
 export type noteStyle = {
   note:noteModel;
-  textColor:string;
   mode:'all' | 'single';
 }
 

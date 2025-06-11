@@ -1,4 +1,4 @@
-0 - Ficou faltando os DOTS, NOTES, FILTER NOTES, FRET NUMBER E SVG - Tirar as notes da Corda
+0 - Ficou faltando os FILTER NOTES, FRET NUMBER(traste - onHover, always, never/ up, down, both) E SVG - Implementar o NoteName
 1 - Menu será side menu fininho com as ferramentas: Escala, Acorde, Filtro, Adicionar Braço, Cores,
   Desenho, ZOOM in e ZOOM out e Outras coisas
 2 - Fretboard terá camadas - Área Externa(desenho), SVG (Desenho - no Background), Neck(z-0), Trastes(z-1), Dots(z-1)
@@ -6,6 +6,7 @@
 3 - Um Container DIV do fretboard para centralizar, e aplicar os paddings necessários
 4 - Um Container DIV do conjunto de Fretboards para aplicação do ZOOM e conter o canvas so SVG
 5 - Tirar a rotação do fretboard em telas menores, aplicar zoom.
+6 - A ferramenta de desenho é um SVG dentro dele cada linha é um g com path dentro pode ter classes ver drawio online para referencia
 
 
 

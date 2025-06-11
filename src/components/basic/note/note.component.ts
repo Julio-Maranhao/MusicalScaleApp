@@ -16,6 +16,7 @@ export class NoteComponent {
   @Input() size!:string;
   @Input() note!: noteModel;
   @Input() behavior: 'single' | 'all' = 'single';
+  @Input() neckID:number = 0;
   @ViewChild('note') noteRef!:ElementRef;
   visibility = true;
   private styleSubscription: Subscription | undefined;
@@ -31,13 +32,16 @@ export class NoteComponent {
       this.visibility = this.note.visibility;
     }
     this.styleSubscription = this.stylesService.noteStyleChanges.subscribe(style => {
+      if (style.note.neckId) {
+        if (!(style.note.neckId == this.neckID)) {return;}
+      }
       if (style.mode == 'all') {
         if (style.note.noteId == this.note.noteId) {
           this.note.noteColor = style.note.noteColor;
-          this.note.textColor = style.textColor;
+          this.note.textColor = style.note.textColor;
           this.note.visibility = style.note.visibility;
           this.stylesService.setStyle(this.noteRef, 'background', style.note.noteColor);
-          this.stylesService.setStyle(this.noteRef, 'color', style.textColor);
+          this.stylesService.setStyle(this.noteRef, 'color', style.note.textColor!);
           this.visibility = style.note.visibility!;
         }
       } else {
@@ -47,10 +51,10 @@ export class NoteComponent {
           style.note.corda == this.note.corda
         ) {
           this.note.noteColor = style.note.noteColor;
-          this.note.textColor = style.textColor;
+          this.note.textColor = style.note.textColor;
           this.note.visibility = style.note.visibility;
           this.stylesService.setStyle(this.noteRef, 'background', style.note.noteColor);
-          this.stylesService.setStyle(this.noteRef, 'color', style.textColor);
+          this.stylesService.setStyle(this.noteRef, 'color', style.note.textColor!);
           this.visibility = style.note.visibility!;
         }
       }
@@ -60,11 +64,6 @@ export class NoteComponent {
         this.stylesService.setStyle(this.noteRef, 'opacity', '0');
       }
     });
-    let leftMargin = -.82 + this.fretSpaceBase * (this.maxFrets - (this.note.traste-1));
-    if (this.note.traste == 0) {
-      leftMargin = 0;
-    }
-    this.marginLeft.set(`margin-left:${leftMargin}px;`);
   }
 
   ngAfterViewInit(){
@@ -106,7 +105,6 @@ export class NoteComponent {
   pickColor(){
     const nStyle:noteStyle = {
       note: this.note,
-      textColor: 'white',
       mode: this.behavior
     }
     this.stylesService.sendNoteStyleChange(nStyle);

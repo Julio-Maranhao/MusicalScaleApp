@@ -17,18 +17,9 @@ export class StringComponent {
   @Input() stringNumber!:number;
   @Input() color:string = 'strings';
   @Input() thickness:'thin' | 'large' = 'thin';
-  @Input() notes!: noteModel[];
-  @Input() fretQtd!:number;
   @ViewChild('string') string!:ElementRef;
-  filteredNotes:noteModel[] = [];
 
   constructor(private stylesService:StylesService){}
-
-  ngOnInit(){
-    if (this.notes && this.stringNumber) {
-      this.filteredNotes = this.notes.filter(e => e.corda == this.stringNumber);
-    }
-  }
 
   ngAfterViewInit(){
     this.stylesService.stringStyleChanges.subscribe(val => {
@@ -39,7 +30,4 @@ export class StringComponent {
     this.stylesService.setStyle(this.string, 'height', `${stringBase * this.stringNumber}px`);
   }
 
-  getRange(num:number) {
-    return new Array(num);
-  }
 }

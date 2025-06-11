@@ -3,9 +3,20 @@
   <app-nut class="nut" color="bone"/>
   @for (n of getRange(instrument.fretNumber); track $index) {
     <app-fret class="fret" [fretNumber]="$index" color="gray" [noteSize]="'medium'" [style]="getFretGridArea($index)" #fret/>
+    @if(dotsPositions.includes($index)){
+      <div class="dots flex flex-center flex-column" [style]="getFretGridArea($index)">
+        <div class="dot"></div>
+        @if($index == 11 || $index == 23){
+          <div class="dot"></div>
+        }
+      </div>
+    }
   }
   @for (tuning of instrument.baiscTuning; track $index) {
-    <app-string class="string" [style]="getStringGridArea($index)" [fretQtd]="instrument.fretNumber" [notes]="notes" class="note-space-{{instrument.appearence.noteSize}}" [stringNumber]="tuning.corda"/>
+    <app-string class="string" [style]="getStringGridArea($index)" class="note-space-{{instrument.appearence.noteSize}}" [stringNumber]="tuning.corda"/>
+  }
+  @for(note of notes; track $index){
+    <app-note class="note" behavior="single" [note]="note" size="medium" [style]="getNoteGridArea(note)"/>
   }
 
 </div>

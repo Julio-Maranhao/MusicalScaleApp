@@ -44,7 +44,6 @@ export class ContextMenuComponent {
           this.stylesService.setStyle(this.noteRef, 'color', txColor);
           this.styleBase = {
             note:noteComponent.note,
-            textColor:txColor,
             mode:noteComponent.behavior
           }
         }
@@ -74,7 +73,7 @@ export class ContextMenuComponent {
 
   changeTextColor(event:Event){
     const color = (event.target as HTMLInputElement).value || '#ffffff';
-    this.styleBase.textColor = color;
+    this.styleBase.note.textColor = color;
     this.stylesService.setStyle(this.noteRef, 'color', color);
     // this.stylesService.sendNoteStyleChange(style);
   }
@@ -99,7 +98,7 @@ export class ContextMenuComponent {
 
   reset(){
     this.styleBase.note.noteColor = '#000000';
-    this.styleBase.textColor = '#ffffff';
+    this.styleBase.note.textColor = '#ffffff';
     this.styleBase.mode = 'single';
     this.styleBase.note.visibility = true;
     this.stylesService.setStyle(this.noteRef, 'background-color', 'black');

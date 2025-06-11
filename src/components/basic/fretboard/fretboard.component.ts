@@ -7,11 +7,12 @@ import { MappingService } from '../../../services/mapping.service';
 import { noteModel } from '../../../models/note-model';
 import { StylesService } from '../../../services/menu/styles.service';
 import { fadeInOutAnimation, listAnimation } from '../../../definitions/animations.definitions';
+import { NoteComponent } from "../note/note.component";
 
 @Component({
   selector: 'app-fretboard',
   standalone: true,
-  imports: [StringComponent, NutComponent, FretComponent],
+  imports: [StringComponent, NutComponent, FretComponent, NoteComponent],
   templateUrl: './fretboard.component.html',
   styleUrl: './fretboard.component.css',
   animations: [fadeInOutAnimation, listAnimation]
@@ -20,12 +21,19 @@ export class FretboardComponent {
   @Input() color:string = 'mapple';
   @Input() instrument!: musicalInstrumentModel;
   @Input() notes!: noteModel[];
+  @Input() neckId:number = 0;
   @ViewChild('fretboard') neck!: ElementRef;
   @ViewChild('neckBg') neckBg!: ElementRef;
+  filterednotes: noteModel[] = [];
+  dotsPositions = [2,4,6,8,11,14,16,18,20,23];
   fretSpaceBase = 1.5;
   maxFrets = 24;
 
   constructor(private styleService:StylesService){}
+
+  ngOnInit(){
+
+  }
 
   ngAfterViewInit(){
     this.styleService.neckStyleChanges.subscribe((val)=>{
@@ -35,6 +43,18 @@ export class FretboardComponent {
 
     const grid = this.generateGrid(this.instrument.fretNumber+2, this.instrument.baiscTuning.length);
     this.setGridToFretboard(grid);
+
+    for (const note of this.notes) {
+      note.neckId = this.neckId;
+      note.onHover = 'show';
+      if(note.traste != 0){
+        note.visibility = false;
+      }
+      this.styleService.sendNoteStyleChange({
+        note: note,
+        mode: 'single'
+      });
+    }
 
   }
 
@@ -60,6 +80,13 @@ export class FretboardComponent {
 
   getStringGridArea(idx:number){
     return `grid-area: ${idx+1}/2/span 1/span ${this.instrument.fretNumber+1}`;
+  }
+
+  getNoteGridArea(note:noteModel){
+    let area = '';
+    area += `s${note.corda}f${note.traste+1}`;
+
+    return `grid-area: ${area}`;
   }
 
   public generateGrid(columns: number, rows: number): { [key: string]: string } {
