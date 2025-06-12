@@ -1,3 +1,11 @@
 .neck-map {
   width: max-content;
+  height: fit-content;
+  padding-bottom: 60px;
+}
+
+.fretboard-container{
+  display: flex;
+  min-width: 100vw;
+  min-height: calc(100vh - 350px);
 }

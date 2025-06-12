@@ -8,6 +8,8 @@ import { noteModel } from '../../../models/note-model';
 import { StylesService } from '../../../services/menu/styles.service';
 import { fadeInOutAnimation, listAnimation } from '../../../definitions/animations.definitions';
 import { NoteComponent } from "../note/note.component";
+import { MenuService } from '../../../services/menu/menu.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-fretboard',
@@ -22,17 +24,37 @@ export class FretboardComponent {
   @Input() instrument!: musicalInstrumentModel;
   @Input() notes!: noteModel[];
   @Input() neckId:number = 0;
+  @Input() fretNumberPosition:'top'|'bottom' = 'bottom';
+  @Input() fretNumberShow:'hover'|'always'|'never' = 'always';
   @ViewChild('fretboard') neck!: ElementRef;
   @ViewChild('neckBg') neckBg!: ElementRef;
-  filterednotes: noteModel[] = [];
+  filteredNotes: noteModel[] = [];
   dotsPositions = [2,4,6,8,11,14,16,18,20,23];
-  fretSpaceBase = 1.5;
   maxFrets = 24;
+  noteClickOption = 'one';
+  noteClickOptionsSubscription!:Subscription;
+  noteStyleChangeSubscription!:Subscription;
 
-  constructor(private styleService:StylesService){}
+  constructor(private styleService:StylesService, private menuService:MenuService){}
 
   ngOnInit(){
-
+    // Click mode on notes
+    this.noteClickOptionsSubscription = this.menuService.onNoteClickChanges.subscribe({
+      next: (val)=>{this.noteClickOption = val;}
+    });
+    this.menuService.getNoteClickOption();
+    // Listen to string and fret note changes
+    this.noteStyleChangeSubscription = this.styleService.noteStyleChanges.subscribe({
+      next: (val)=>{
+        if (val.mode == 'string') {
+          this.toggleNotesByString(val.note);
+        } else if (val.mode == 'fret-start') {
+          this.toggleNoteByFretStart(val.note);
+        } else if (val.mode == 'fret-end') {
+          this.toggleNoteByFretEnd(val.note);
+        }
+      }
+    })
   }
 
   ngAfterViewInit(){
@@ -58,6 +80,78 @@ export class FretboardComponent {
 
   }
 
+  onClick(note:noteModel){
+    this.toggleNoteVisibility(note);
+  }
+
+  toggleNoteVisibility(note:noteModel){
+    if (this.noteClickOption == 'filter') {return;}
+    note.visibility = !note.visibility;
+    const mode = this.noteClickOption == 'all' ? 'all' : 'single';
+    this.styleService.sendNoteStyleChange({
+      note: note,
+      mode: mode
+    });
+    if (note.visibility) {
+      this.addNoteToFilteredList(note);
+    } else {
+      this.removeNoteFromFilteredList(note);
+    }
+  }
+
+  addNoteToFilteredList(note:noteModel){
+    if (this.filteredNotes.find(n => n.noteId == note.noteId)) {return;}
+    this.filteredNotes.push(note);
+  }
+  removeNoteFromFilteredList(note:noteModel){
+    if (!this.filteredNotes.find(n => n.noteId == note.noteId)) {return;}
+    this.filteredNotes.splice(this.filteredNotes.indexOf(note), 1);
+  }
+  resetFilteredList(){
+    this.filteredNotes = [];
+  }
+
+  toggleNotesByString(note:noteModel) {
+    for (const note2 of this.filteredNotes) {
+      if (note2.corda == note.corda) {
+        note2.visibility = note.visibility;
+        this.styleService.sendNoteStyleChange({
+          note: note2,
+          mode: 'single'
+        });
+      }
+    }
+  }
+
+  toggleNoteByFretStart(note:noteModel) {
+    for (const note2 of this.filteredNotes) {
+      if (note2.traste < note.traste) {
+        note2.visibility = false;
+      } else {
+        note2.visibility = true;
+      }
+      this.styleService.sendNoteStyleChange({
+          note: note2,
+          mode: 'single'
+        });
+    }
+  }
+
+  toggleNoteByFretEnd(note:noteModel) {
+    for (const note2 of this.filteredNotes) {
+      if (note2.traste > note.traste) {
+        note2.visibility = false;
+      } else {
+        note2.visibility = true;
+      }
+      this.styleService.sendNoteStyleChange({
+          note: note2,
+          mode: 'single'
+        });
+    }
+  }
+
+  // GRID CREATION FORMULAS
   getRange(num:number){
     return new Array(num);
   }
@@ -98,7 +192,7 @@ export class FretboardComponent {
     let columnWidths: string[] = [];
     for (let i = 0; i < columns; i++) {
       // A largura é calculada como se estivéssemos indo da esquerda para a direita
-      const columnWidth = initialColumnWidth + this.fretSpaceBase * (this.maxFrets - (i+1)) + 4 + 1.5;
+      const columnWidth = initialColumnWidth + columnWidthIncrement * (this.maxFrets - (i+1)) + 4 + 1.5;
       columnWidths.push(`${columnWidth}px`);
     }
 
@@ -124,6 +218,11 @@ export class FretboardComponent {
       'grid-template-rows': gridTemplateRows,
       'grid-template-areas': gridTemplateAreas.trim()
     };
+  }
+
+  ngOnDestroy(){
+    this.noteClickOptionsSubscription?.unsubscribe();
+    this.noteStyleChangeSubscription?.unsubscribe();
   }
 
 }

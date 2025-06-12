@@ -312,9 +312,3 @@ a {
   height: 100%;
   opacity: 0;
 }
-
-@media screen and (max-width: 768px) {
-  .fretboard-container {
-    height: 1700px;
-  }
-}

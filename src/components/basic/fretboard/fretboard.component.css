@@ -29,7 +29,7 @@
 }
 
 .dots {
-  z-index: 3;
+  z-index: 2;
   justify-content: space-around;
 }
 
@@ -54,17 +54,4 @@
   justify-content: center;
   align-content: center;
   margin-right: 4px;
-}
-
-
-@media screen and (max-width: 768px) {
-  .fretboard{
-    justify-self: start;
-    align-self: flex-start;
-    transform: translateX(calc(50vw - 125px));
-    -webkit-transform: translateX(calc(50vw - 125px));
-    -moz-transform: translateX(calc(50vw - 125px));
-    -ms-transform: translateX(calc(50vw - 125px));
-    -o-transform: translateX(calc(50vw - 125px));
-}
 }

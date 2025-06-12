@@ -9,6 +9,13 @@ import { ID_PARA_NOTA_PADRAO, NOTE_LIST } from '../../definitions/acordes.defini
   providedIn: 'root'
 })
 export class MenuService {
+  noteClickOption:'one'|'all'|'filter' = 'one';
+  onNoteClickChanges:Subject<string> = new Subject<string>();
+  menuAction:'none'|'string'|'fret-start'|'fret-end' = 'none';
+  onMenuActionChanges:Subject<string> = new Subject<string>();
+
+
+  // Old Functions
   noteList:noteModel[] = [];
   instrumentStringList:number[] = [];
   // Context Menu
@@ -29,6 +36,17 @@ export class MenuService {
     this.onMenuPositionChanges.next(event);
   }
 
+  getNoteClickOption(){
+    this.onNoteClickChanges.next(this.noteClickOption);
+  }
+
+  setNoteClickOption(option:'one'|'all'|'filter'){
+    this.noteClickOption = option;
+    this.onNoteClickChanges.next(option);
+  }
+
+
+  // OLD FUCTIONS
   addNoteToFilterList(note:noteModel){
     const sameNoteIDs = this.noteList.filter(n => n.noteId == note.noteId);
     if (sameNoteIDs.length > 0) {this.removeNoteFromFilterList(note); return}

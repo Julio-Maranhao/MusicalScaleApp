@@ -1,12 +1,10 @@
-0 - Ficou faltando os FILTER NOTES, FRET NUMBER(traste - onHover, always, never/ up, down, both) E SVG - Implementar o NoteName
 1 - Menu será side menu fininho com as ferramentas: Escala, Acorde, Filtro, Adicionar Braço, Cores,
   Desenho, ZOOM in e ZOOM out e Outras coisas
-2 - Fretboard terá camadas - Área Externa(desenho), SVG (Desenho - no Background), Neck(z-0), Trastes(z-1), Dots(z-1)
-  Numeros de casa (z-1), Cordas(z-2), allNotes(z-3)(hover-show), filter Notes (z-4)(notas visiveis)
-3 - Um Container DIV do fretboard para centralizar, e aplicar os paddings necessários
+
 4 - Um Container DIV do conjunto de Fretboards para aplicação do ZOOM e conter o canvas so SVG
 5 - Tirar a rotação do fretboard em telas menores, aplicar zoom.
 6 - A ferramenta de desenho é um SVG dentro dele cada linha é um g com path dentro pode ter classes ver drawio online para referencia
+7 - Implamentar Note Name Change
 
 
 
@@ -22,33 +20,9 @@
 4 - Filter drag reorder add Drag
 
 
-      (               🔍) (⚙)
-      (                             ) - Varios menus (Instrumento, Tonica, Acordes, Escalas)
-      Em baixo aparece as opções selecionadas.
-      (lista de notas +             ) - > ao adicionar notas (click)
-      (buscar acorde)(buscar escala) - > quando as notas aparecerem dependendo do filtro
-      (escala: C) (C79) (escala: B)(C7Maj) -> Opções da busca e um botão para limpar a busca
-
 MODAL:
 1 - Modal para criação de instrumentos com a seleção de todas as cores
 2 - Componente de criação de gradient
 3 - Botão preview opacity 0.1
 
 
-MENU:
-0 - Formato: (🔍250px) (filtro 50px) (configurações 50px)
-  0.1 - Resultado da busca em baixo formato: (notas ou texto do acorde)
-  0.2 - Seleção de notas até 6 notas por fileira e seleção de cor ao clicar input type="color"
-  0.3 - Context Menu (right click) para selecionar nota e definir a cor,
-        expandir seleção, setar a cor de vários ao mesmo tempo com uma lista
-        dentro do serviço de seleção de notas onde o evento de note change é ativado
-        buscar acorde ao clicar enter ou no botão da lupa
-1 - Selecionar instrumento -> Side Menu
-  1.1 - Editar o Instrumento selecionado, cores, afinação, nome, trastes
-  1.2 - Criar novo instrumento
-  1.3 - Salvar instrumento
-2 - Seleção Notas -> Menu Central
-  2.1 - Editar cor da nota
-  2.2 - Não visualizar nota
-  2.3 - Salvar configuração
-3 -

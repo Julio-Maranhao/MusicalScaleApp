@@ -13,7 +13,7 @@ export type noteModel = {
 
 export type noteStyle = {
   note:noteModel;
-  mode:'all' | 'single';
+  mode:'all' | 'single'|'fret-start'|'fret-end'|'string';
 }
 
 export interface FiltrosNotas {
