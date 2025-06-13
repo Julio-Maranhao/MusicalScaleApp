@@ -1,1 +1,16 @@
-<p>side-menu works!</p>
+<div class="side-menu flex flex-column flex-gap-1">
+  @for (option of options; track $index) {
+    <div class="menu-button flex flex-center pointer">
+      <img
+        src="{{option.icon}}"
+        [alt]="option.name" [height]="option.height" [width]="option.width"
+        (click)="option?.action()"
+      >
+    </div>
+    @if(options[$index + 1]){
+      @if(options[$index+1].section > option.section){
+        <div class="menu-section-separator"></div>
+      }
+    }
+  }
+</div>

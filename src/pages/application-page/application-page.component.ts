@@ -4,11 +4,12 @@ import { FretboardComponent } from "../../components/basic/fretboard/fretboard.c
 import { MappingService } from '../../services/mapping.service';
 import { musicalInstrumentModel } from '../../models/instrument-model';
 import { noteModel } from '../../models/note-model';
+import { SideMenuComponent } from "../../components/ui/side-menu/side-menu.component";
 
 @Component({
   selector: 'app-application-page',
   standalone: true,
-  imports: [BackgroundComponent, FretboardComponent],
+  imports: [BackgroundComponent, FretboardComponent, SideMenuComponent],
   templateUrl: './application-page.component.html',
   styleUrl: './application-page.component.css'
 })

@@ -1,0 +1,34 @@
+.side-menu {
+  position: fixed;
+  left: 5px;
+  top: 125px;
+  z-index: 999;
+  padding: .5rem;
+  width: min-content;
+  background-color: #ffffff99;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
+.menu-button {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  box-shadow: 2px 2px 3px #888888;
+}
+
+.menu-section-separator{
+  height: 2px;
+  width: 40px;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  background-color: #ffffff99;
+}
